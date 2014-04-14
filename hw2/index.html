@@ -1,0 +1,48 @@
+<!DOCTYPE html> <html> <head> <title>Keenon Ono Homework 2</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+
+<style>
+#xlisthere li { cursor: pointer; padding: 3px 3px 3px 3px; text-decoration: underline; color: #cc0000; }
+#showhere iframe { width: 90%; height: 200px; display: none; }
+</style>
+
+<script>
+
+
+
+$(document).on('pageinit', function() {
+  var items = [
+    {"name":"Oregon State University",
+     "image":"http://oregonstate.edu/osuhomepage/regions/top-hat/current/images/osu-tag.png"},
+    {"name":"University of Oregon",
+     "image":"https://uoregon.edu/sites/uoregon2.wc-www.uoregon.edu/themes/uo_homesite/logo.png"},
+    {"name":"Portland State University",
+     "image":"http://www.pdx.edu/sites/all/themes/pdx_home/logo.png"},
+    {"name":"Southern Oregon University",
+     "image":"http://www.sou.edu/templates/souhometemplate1/css/img/logo-reversed.png"}
+  ];
+
+  var loc = $("#listhere").html('');
+  for (var i = 0; i < items.length; i++) {
+    var ttl = items[i].name;
+    var lnk = items[i].image;
+    
+    $('<div id="schoolrow'+i+'" style="display:table-row" />').appendTo($("<div/>").appendTo(loc));
+    $('<div style="display:table-cell"/>').text(ttl).appendTo($("<div/>").appendTo('#schoolrow'+i));
+    $('<div id="img'+i+'"style="display:table-cell"/>').appendTo($("<div/>").appendTo('#schoolrow'+i));
+    $('<img src="'+lnk+'"/>').appendTo($("<div/>").appendTo('#img'+i));
+  }
+  loc.listview('refresh');
+	
+});
+
+</script> </head> <body> <div data-role="page">
+	<div data-role="header"><h1>Keenon Ono Homework 2</h1></div>
+
+	<div data-role="content">
+		<div data-role="listview" data-inset="true"  id="listhere" style="display:table"></div>
+	</div>
+</div></body></html>
